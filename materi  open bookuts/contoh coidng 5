@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Joacquine</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg sticky-top">
+<div class="container">
+<a class="navbar-brand fw-bold">My Porto</a>
+
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link" href="#home">Beranda</a></li>
+<li class="nav-item"><a class="nav-link" href="#about">Tentang</a></li>
+<li class="nav-item"><a class="nav-link" href="#project">Project</a></li>
+<li class="nav-item"><a class="nav-link" href="#contact">Kontak</a></li>
+</ul>
+</div>
+</div>
+</nav>
+
+<section id="home" class="container section-space">
+<div class="row align-items-center hero-box">
+<div class="col-md-7">
+<h1 class="fw-bold hero-title">Muhammad Joacquine W.Q</h1>
+<p class="hero-subtitle">Tiktok Creator • UI/UX Beginner</p>
+<p>Saya membuat konten game sepak bola dan sedang belajar UI/UX & Web.</p>
+<button onclick="scrollProject()" class="btn btn-primary">Lihat Project</button>
+</div>
+
+<div class="col-md-5 text-center">
+<img src="muka.png" class="profile-img">
+</div>
+</div>
+</section>
+
+<section id="about" class="container section-space">
+<div class="row align-items-center about-box">
+<div class="col-md-5 text-center">
+<img src="muka.png" class="profile-img">
+</div>
+<div class="col-md-7">
+<h2 class="fw-bold">Tentang Saya</h2>
+<div class="title-line"></div>
+<p class="text-muted">Mahasiswa Sistem Informasi & konten kreator TikTok eFootball dan FC Mobile.</p>
+<p class="text-muted">Sedang fokus belajar UI/UX Design dan Web Development.</p>
+<button onclick="infoTambahan()" class="btn btn-outline-danger">Sapa Saya</button>
+</div>
+</div>
+</section>
+
+<section id="project" class="container section-space">
+<h2 class="text-center fw-bold mb-5">Project Saya</h2>
+<div class="row justify-content-center">
+
+<div class="col-md-5 mb-4">
+<div class="card custom-card">
+<img src="fc mobile.png" class="card-img-top">
+<div class="card-body">
+<h5 class="fw-bold">Konten FC Mobile</h5>
+<p class="text-muted">Ranking & tips pemain.</p>
+</div>
+</div>
+</div>
+
+<div class="col-md-5 mb-4">
+<div class="card custom-card">
+<img src="eFootball.png" class="card-img-top">
+<div class="card-body">
+<h5 class="fw-bold">Konten eFootball</h5>
+<p class="text-muted">Racikan squad.</p>
+</div>
+</div>
+</div>
+
+<div class="col-md-5 mb-4">
+<div class="card custom-card">
+<img src="PROJECT EXC.png" class="card-img-top">
+<div class="card-body">
+<h5 class="fw-bold">UI Web Esport</h5>
+<p class="text-muted">Desain Figma.</p>
+</div>
+</div>
+</div>
+
+<div class="col-md-5 mb-4">
+<div class="card custom-card">
+<img src="Pembeliann tiket.png" class="card-img-top">
+<div class="card-body">
+<h5 class="fw-bold">UI Tiket</h5>
+<p class="text-muted">Desain pembayaran.</p>
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<section id="contact" class="container section-space">
+<div class="row justify-content-center">
+<div class="col-md-7 contact-box">
+<h2 class="text-center fw-bold mb-4">Hubungi Saya</h2>
+
+<form onsubmit="kirimPesan(event)">
+<input type="text" id="nama" class="form-control mb-3" placeholder="Nama Anda" required>
+<input type="email" id="email" class="form-control mb-3" placeholder="Email Anda" required>
+<textarea id="pesan" class="form-control mb-3" rows="4" placeholder="Pesan..." required></textarea>
+<button class="btn btn-primary w-100">Kirim Pesan</button>
+</form>
+
+</div>
+</div>
+</section>
+
+<footer class="footer text-center">
+<p class="copyright">© 2026 Muhammad Joacquine W.Q. All Rights Reserved.</p>
+<p class="copyright-small">Konten website dilindungi Undang-Undang Hak Cipta.</p>
+<a href="terms.html" class="terms-link">Terms of Use</a>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Use</title>
+
+<link rel="stylesheet" href="style.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container mt-5 mb-5">
+
+<div class="row">
+<div class="col-md-3">
+<h4>Daftar Isi</h4>
+<div class="toc"></div>
+</div>
+
+<div class="col-md-9 content">
+
+<h1>Terms of Use</h1>
+
+<h2>Hak Cipta</h2>
+<p>Semua konten dilindungi Undang-Undang Hak Cipta.</p>
+
+<h2>Larangan Penggunaan</h2>
+<ul>
+<li>Dilarang menyalin konten.</li>
+<li>Dilarang menggunakan desain untuk komersial.</li>
+<li>Dilarang mengklaim sebagai milik sendiri.</li>
+</ul>
+
+<h2>Penggunaan Wajar</h2>
+<p>Website boleh digunakan sebagai referensi belajar.</p>
+
+<h2>Batasan Tanggung Jawab</h2>
+<p>Pemilik tidak bertanggung jawab atas kerugian penggunaan informasi.</p>
+
+<h2>Perubahan Ketentuan</h2>
+<p>Ketentuan dapat berubah sewaktu-waktu.</p>
+
+<a href="index.html" class="btn btn-primary mt-4">Kembali</a>
+
+</div>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/tocbot/dist/tocbot.min.js"></script>
+<script>
+tocbot.init({
+tocSelector: '.toc',
+contentSelector: '.content',
+headingSelector: 'h1, h2, h3'
+});
+</script>
+
+</body>
+</html>
+
+:root{
+--navbar-bg:#fd4f4f;
+--accent:#FFD700;
+--btn:#b2c72b;
+--btn-hover:#ccff00;
+}
+
+body{font-family:'Segoe UI';background:#f5f6fa;}
+
+.section-space{margin-top:80px;}
+
+.hero-box,.about-box,.contact-box{
+background:white;
+padding:50px;
+border-radius:20px;
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+.navbar{background:var(--navbar-bg);}
+.nav-link{color:white!important;font-weight:500;}
+.nav-link:hover{color:var(--accent)!important;}
+
+.btn-primary{background:var(--btn);border:none;color:black;font-weight:600;}
+.btn-primary:hover{background:var(--btn-hover);}
+
+.profile-img{
+width:250px;border-radius:50%;
+border:6px solid var(--navbar-bg);
+}
+
+.custom-card{border-radius:15px;box-shadow:0 5px 15px rgba(0,0,0,0.1);}
+
+.footer{background:var(--navbar-bg);padding:30px;color:white;}
+
+.copyright-small{font-size:13px;opacity:0.8;}
+.terms-link{color:#FFD700;font-weight:600;text-decoration:none;}
+
+js
+console.log("Website loaded");
+
+function scrollProject(){
+document.getElementById("project").scrollIntoView({behavior:"smooth"});
+}
+
+function infoTambahan(){
+alert("Terima kasih sudah mengunjungi portfolio saya!");
+}
+
+function kirimPesan(e){
+e.preventDefault();
+alert("Pesan berhasil dikirim!");
+}

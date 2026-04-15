@@ -1,0 +1,200 @@
+INDED
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Nyawit Raharja</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top nav-custom">
+<div class="container">
+<a class="navbar-brand fw-bold">RAHARJA SAWIT</a>
+
+<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="nav">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a href="#home" class="nav-link">Beranda</a></li>
+<li class="nav-item"><a href="#about" class="nav-link">Tentang</a></li>
+<li class="nav-item"><a href="#panen" class="nav-link">Hasil Kebun</a></li>
+<li class="nav-item"><a href="#kontak" class="nav-link">Hubungi</a></li>
+</ul>
+</div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero">
+<div class="overlay">
+<div class="container text-center">
+<h1 class="display-4 fw-bold">Nyawit Raharja</h1>
+<p>Mendedikasikan hidup untuk kelapa sawit berkelanjutan</p>
+<button class="btn btn-warning btn-lg mt-3" onclick="scrollAbout()">Kenali Saya</button>
+</div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="py-5 text-center">
+<div class="container">
+<h2 class="section-title mb-4">Siapa Nyawit Raharja?</h2>
+<p class="col-md-8 mx-auto">
+Petani kelapa sawit berpengalaman lebih dari 20 tahun di Sumatera. 
+Menerapkan teknik modern ramah lingkungan dan menghasilkan TBS kualitas premium.
+</p>
+
+<div class="row mt-4">
+<div class="col"><h3>50+</h3><p>Hektar Lahan</p></div>
+<div class="col"><h3>100%</h3><p>Organik Parsial</p></div>
+<div class="col"><h3>25 Th</h3><p>Pengalaman</p></div>
+</div>
+</div>
+</section>
+
+<!-- PANEN -->
+<section id="panen" class="py-5 bg-light text-center">
+<div class="container">
+<h2 class="section-title mb-4">Dokumentasi & Hasil Panen</h2>
+
+<div class="row">
+<div class="col-md-4">
+<div class="card shadow">
+<img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9" class="card-img-top">
+<div class="card-body">
+<h5>Pembibitan Unggul</h5>
+<p>Bibit DxP berkualitas tinggi.</p>
+</div>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card shadow">
+<img src="https://images.unsplash.com/photo-1599058918144-1ffabb6ab9a0" class="card-img-top">
+<div class="card-body">
+<h5>Pemeliharaan Intensif</h5>
+<p>Pemupukan tepat & kontrol gulma.</p>
+</div>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card shadow">
+<img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38" class="card-img-top">
+<div class="card-body">
+<h5>Panen Raya</h5>
+<p>TBS segar dengan rendemen tinggi.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- KONTAK -->
+<section id="kontak" class="py-5 text-center">
+<div class="container">
+<h2 class="section-title mb-4">Hubungi Nyawit</h2>
+
+<div class="col-md-8 mx-auto">
+<form onsubmit="kirimPesan(event)">
+<input class="form-control mb-3" placeholder="Nama Lengkap" required>
+<input type="email" class="form-control mb-3" placeholder="Email" required>
+<textarea class="form-control mb-3" placeholder="Pesan"></textarea>
+<button class="btn btn-warning w-100">Kirim Pesan</button>
+</form>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer text-center p-4">
+<p>© 2026 Portofolio Nyawit Raharja. Semua Hak Dilindungi.</p>
+<a href="#" data-bs-toggle="modal" data-bs-target="#terms">Terms of Use</a>
+</footer>
+
+<!-- MODAL TERMS -->
+<div class="modal fade" id="terms">
+<div class="modal-dialog modal-lg">
+<div class="modal-content p-4">
+<h3>Terms of Use</h3>
+
+<p><b>Hak Cipta</b><br>
+Seluruh konten website dilindungi UU Hak Cipta Indonesia.</p>
+
+<ul>
+<li>Dilarang menyalin tanpa izin</li>
+<li>Dilarang penggunaan komersial</li>
+<li>Pelanggaran dikenakan sanksi hukum</li>
+</ul>
+
+<button class="btn btn-success" data-bs-dismiss="modal">Tutup</button>
+</div>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
+
+CSS
+.nav-custom{
+    background:#2e6b2f;
+}
+
+.hero{
+    background:url('https://images.unsplash.com/photo-1598514982562-9c0b2cb61dc3') center/cover;
+    height:90vh;
+    color:white;
+    display:flex;
+    align-items:center;
+}
+
+.overlay{
+    background:rgba(0,0,0,0.55);
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+}
+
+.section-title{
+    color:#2e6b2f;
+    font-weight:bold;
+}
+
+.card{
+    border:none;
+    border-radius:15px;
+}
+
+.footer{
+    background:#5a3419;
+    color:white;
+}
+
+.footer a{
+    color:#ffd54f;
+    text-decoration:none;
+}
+
+JS 
+function scrollAbout(){
+    document.getElementById("about")
+    .scrollIntoView({behavior:"smooth"});
+}
+
+function kirimPesan(e){
+    e.preventDefault();
+    alert("Pesan berhasil dikirim!");
+}

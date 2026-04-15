@@ -1,0 +1,274 @@
+INDEX
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raharja Sawit - Portofolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top custom-navbar">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">RAHARJA SAWIT</a>
+            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tentang">Tentang</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#hasil">Hasil Kebun</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#hubungi">Hubungi Kami</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="container hero-content">
+            <h1 class="fw-bold mb-3">Nyawit Raharja</h1>
+            <p class="lead mb-4">Mendedikasikan Hidup untuk Kelapa Sawit yang Berkelanjutan dan Berkualitas.</p>
+            <a href="#tentang" class="btn btn-custom">Kenali Saya Lebih Dekat</a>
+        </div>
+    </section>
+
+    <section id="tentang" class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-md-5 mb-4 mb-md-0">
+                <img src="https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kebun Sawit" class="about-img shadow">
+            </div>
+            <div class="col-md-7 ps-md-5">
+                <h2 class="fw-bold mb-4 text-primary-green">Siapa Nyawit Raharja?</h2>
+                <p>Saya adalah seorang petani kelapa sawit yang telah bergelut di bidang perkebunan selama lebih dari 20 tahun. Berfokus di wilayah Sumatera, saya menerapkan teknik pertanian modern yang ramah lingkungan.</p>
+                <p>Misi saya adalah membuktikan bahwa perkebunan sawit rakyat dapat dikelola secara profesional dengan hasil panen (TBS) kualitas premium yang memenuhi standar industri global.</p>
+                
+                <div class="row mt-4 text-center">
+                    <div class="col-4">
+                        <div class="stats-text">50+</div>
+                        <small>Hektar Lahan</small>
+                    </div>
+                    <div class="col-4">
+                        <div class="stats-text">100%</div>
+                        <small>Organik Parsial</small>
+                    </div>
+                    <div class="col-4">
+                        <div class="stats-text">25thn</div>
+                        <small>Pengalaman</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="hasil" class="hasil-section">
+        <div class="container">
+            <h2 class="fw-bold text-center mb-5 text-primary-green">Dokumentasi & Hasil Panen</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1596431980838-89c0b1154c5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Pembibitan">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold">Pembibitan Unggul</h5>
+                            <p class="card-text text-muted">Seleksi bibit DxP berkualitas tinggi untuk menjamin produktivitas masa depan.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Pemeliharaan">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold">Pemeliharaan Intensif</h5>
+                            <p class="card-text text-muted">Manajemen gulma dan pemupukan tepat dosis sesuai analisis daun.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1528183429752-a97d0bf99b5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Panen Raya">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold">Panen Raya TBS</h5>
+                            <p class="card-text text-muted">Hasil panen Tandan Buah Segar yang segar dengan rendemen minyak yang tinggi.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="hubungi" class="container py-5">
+        <h2 class="fw-bold text-center mb-4 text-primary-green">Hubungi Nyawit</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="contact-form-card">
+                    <form id="contactForm">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="nama" class="form-label">Nama Lengkap</label>
+                                <input type="text" class="form-control" id="nama" placeholder="Masukkan nama Anda" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="nama@email.com" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="pesan" class="form-label">Pesan / Kerjasama</label>
+                            <textarea class="form-control" id="pesan" rows="4" placeholder="Apa yang ingin Anda diskusikan?" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-custom w-100">Kirim Pesan Sekarang</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="custom-footer text-center">
+        <div class="container">
+            <p class="mb-1">&copy; 2026 Portofolio Nyawit Raharja. Semua Hak Dilindungi.</p>
+            <small class="footer-muted-text">
+                Dibuat dengan semangat memajukan pertanian Indonesia. | <a href="#" class="footer-link">Terms of Use</a>
+            </small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
+/* Variabel Warna Global */
+:root {
+    --primary-green: #375534;
+    --btn-yellow: #f3ca56;
+    --bg-light: #f9f9f9;
+    --footer-brown: #4a3b32;
+    --card-bg-light: #eef5e9;
+}
+
+/* Pengaturan Font Dasar */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Utilitas Teks Kustom */
+.text-primary-green {
+    color: var(--primary-green) !important;
+}
+
+/* Navbar */
+.custom-navbar {
+    background-color: var(--primary-green);
+}
+.navbar-brand, .nav-link {
+    color: white !important;
+    font-weight: 500;
+}
+.nav-link:hover {
+    color: var(--btn-yellow) !important;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hero-content {
+    color: white;
+    text-align: center;
+}
+
+/* Tombol Kustom (Kuning) */
+.btn-custom {
+    background-color: var(--btn-yellow);
+    color: #333;
+    font-weight: bold;
+    border-radius: 25px;
+    padding: 10px 30px;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+.btn-custom:hover {
+    background-color: #e0b840;
+    color: #333;
+}
+
+/* Tentang Section */
+.about-img {
+    width: 100%;
+    border-radius: 50% / 30%; /* Membuat bentuk oval seperti mockup */
+    object-fit: cover;
+}
+.stats-text {
+    color: var(--primary-green);
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* Hasil Panen Section */
+.hasil-section {
+    background-color: var(--bg-light);
+    padding: 50px 0;
+}
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Hubungi Kami Section */
+.contact-form-card {
+    background-color: var(--card-bg-light);
+    border-radius: 15px;
+    padding: 30px;
+    border: none;
+}
+
+/* Footer Section */
+.custom-footer {
+    background-color: var(--footer-brown);
+    color: white;
+    padding: 20px 0;
+    font-size: 0.9rem;
+}
+.footer-muted-text {
+    color: #cccccc;
+}
+.footer-link {
+    color: var(--btn-yellow);
+    text-decoration: none;
+}
+.footer-link:hover {
+    text-decoration: underline;
+}
+
+JS
+// Menunggu seluruh dokumen HTML selesai dimuat
+document.addEventListener("DOMContentLoaded", function() {
+    
+    // Mengambil elemen formulir berdasarkan ID
+    const contactForm = document.getElementById('contactForm');
+    
+    // Memastikan elemen formulir ada sebelum menambahkan event listener
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(event) {
+            // Mencegah halaman reload (refresh) saat form disubmit
+            event.preventDefault(); 
+            
+            // Mengambil nilai dari input nama
+            const nama = document.getElementById('nama').value;
+            
+            // Menampilkan notifikasi popup (alert) kepada pengguna
+            alert('Halo ' + nama + ', terima kasih! Pesan kerjasama Anda telah berhasil dikirim. Kami akan membalas ke email Anda segera.');
+            
+            // Mengosongkan isian form setelah disubmit
+            this.reset();
+        });
+    }
+    
+});
+

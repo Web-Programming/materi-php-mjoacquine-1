@@ -1,0 +1,487 @@
+penjelasan coding  (contoh koidng dibawah) 
+1. File index.php (Halaman Utama Website)
+Struktur dasar HTML
+
+Bagian ini adalah kerangka utama halaman web.
+<!DOCTYPE html> berfungsi untuk memberitahu browser bahwa dokumen ini menggunakan HTML5.
+Tag <html lang="id"> menunjukkan bahwa bahasa utama halaman adalah bahasa Indonesia.
+
+Bagian <head> berisi informasi penting seperti karakter encoding UTF-8 agar huruf Indonesia tampil benar, pengaturan tampilan responsif di perangkat mobile, judul halaman “Nyawit Raharja”, serta pemanggilan Bootstrap dari CDN dan file CSS lokal style.css untuk desain tambahan.
+
+Navbar (Menu Navigasi)
+
+Bagian <nav> digunakan untuk membuat menu di bagian atas website.
+Class Bootstrap seperti navbar, navbar-expand-lg, dan fixed-top membuat navbar responsif dan selalu berada di atas saat scroll.
+
+Di dalamnya terdapat:
+
+Logo atau nama website “RAHARJA SAWIT”
+Tombol menu hamburger untuk tampilan mobile
+Link navigasi ke bagian halaman seperti Beranda, Tentang, Hasil Kebun, dan Hubungi
+
+Link tersebut menggunakan #home, #about, dll yang berarti mengarah ke section dalam halaman yang sama.
+
+Section Hero (Halaman Pembuka)
+
+Bagian <section id="home"> adalah tampilan utama pertama yang dilihat user.
+
+Di dalamnya terdapat:
+
+Judul besar “Nyawit Raharja”
+Deskripsi singkat tentang perusahaan
+Tombol “Kenali Lebih Dekat” yang jika diklik akan scroll ke bagian about
+
+Class hero-overlay digunakan untuk memberi efek gelap transparan di atas gambar background agar teks lebih jelas terbaca.
+
+Section About (Tentang)
+
+Bagian ini menjelaskan profil singkat.
+
+Struktur menggunakan grid Bootstrap:
+
+Kolom kiri berisi gambar
+Kolom kanan berisi teks penjelasan
+
+Terdapat juga bagian statistik seperti:
+
+50+ hektar lahan
+100% organik
+25 tahun pengalaman
+
+Bagian ini menggunakan row dan col-md-6 untuk membagi layout menjadi dua bagian.
+
+Section Produk / Dokumentasi
+
+Bagian ini menampilkan hasil atau aktivitas kebun dalam bentuk card.
+
+Setiap card berisi:
+
+Gambar
+Judul (contoh: Pembibitan Unggul)
+Deskripsi singkat
+
+Bootstrap col-md-4 membuat tiga card sejajar dalam satu baris di layar besar.
+
+Class custom-card dari CSS digunakan untuk memberikan efek hover seperti naik dan bayangan.
+
+Section Kontak (Form)
+
+Bagian ini adalah form untuk mengirim pesan.
+
+Input yang tersedia:
+
+Nama
+Email
+Pesan
+
+Form ini menggunakan event:
+onsubmit="kirimPesan(event)"
+
+Artinya saat tombol diklik, JavaScript akan dijalankan terlebih dahulu sebelum form benar-benar dikirim.
+
+Footer
+
+Footer adalah bagian paling bawah website.
+
+Isinya:
+
+Copyright
+Link Privacy Policy
+Link Terms of Use
+Script Bootstrap dan JS
+
+Bootstrap JS digunakan untuk fitur seperti navbar mobile.
+File script.js digunakan untuk menjalankan fungsi form.
+
+2. File css/style.css (Desain Website)
+Body
+
+Mengatur font seluruh website menjadi Arial agar lebih sederhana dan rapi.
+
+Navbar
+
+.custom-navbar memberi warna hijau khas sawit.
+.navbar-brand dan .nav-link dibuat putih agar kontras dengan background hijau.
+
+Hero Section
+
+Bagian ini mengatur:
+
+Tinggi layar penuh (100vh)
+Background gambar sawit
+Overlay gelap agar teks lebih jelas
+
+Judul dibuat besar (60px) dan tebal agar menarik perhatian.
+
+Section Padding
+
+.section-padding memberi jarak atas dan bawah pada setiap section agar tidak terlalu rapat.
+
+Judul Section
+
+.section-title memberi warna hijau dan membuat teks lebih tegas.
+
+Statistik
+
+.stats h3 memberi warna hijau dan membuat angka terlihat lebih menonjol.
+
+Card Produk
+
+Card dibuat tanpa border agar terlihat modern.
+Efek hover:
+
+Naik ke atas (translateY)
+Shadow muncul agar terlihat seperti 3D
+
+Gambar diatur agar ukuran konsisten menggunakan object-fit: cover.
+
+Form Kontak
+
+Form dibatasi maksimal 600px agar tidak terlalu lebar dan tetap rapi di tengah halaman.
+
+Footer
+
+Footer diberi warna hitam dan teks putih agar terlihat jelas di bagian bawah halaman.
+
+Link diberi warna kuning agar menonjol.
+
+3. File js/script.js (JavaScript Form)
+
+Fungsi:
+
+function kirimPesan(e)
+Penjelasan:
+e.preventDefault() mencegah form langsung terkirim ke server
+Mengambil nilai input dari:
+nama
+email
+pesan
+Validasi:
+
+Jika salah satu input kosong, maka muncul alert:
+“Semua field wajib diisi!”
+
+Jika semua terisi, maka muncul:
+“Pesan berhasil dikirim!”
+
+Fungsi ini hanya simulasi, belum terhubung ke database.
+
+4. File privacy.php
+
+Halaman ini berisi kebijakan privasi website.
+
+Penjelasan:
+
+Menyatakan bahwa data dari form hanya digunakan untuk komunikasi
+Tidak dibagikan ke pihak lain
+Menggunakan Bootstrap agar tampilan sederhana dan rapi
+
+Ada link kembali ke halaman utama (index.php)
+
+5. File terms.php
+
+Halaman ini berisi syarat penggunaan website.
+
+Penjelasan:
+
+Semua konten dilindungi hak cipta
+Dilarang menyalin tanpa izin
+
+Sama seperti privacy, halaman ini hanya informasi statis
+
+
+index.php
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nyawit Raharja</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg fixed-top custom-navbar">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">RAHARJA SAWIT</a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#home">Beranda</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">Tentang</a></li>
+        <li class="nav-item"><a class="nav-link" href="#produk">Hasil Kebun</a></li>
+        <li class="nav-item"><a class="nav-link" href="#kontak">Hubungi</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section id="home" class="hero-section">
+  <div class="hero-overlay">
+    <div class="container text-center hero-content">
+      <h1>Nyawit Raharja</h1>
+      <p>Mendedikasikan hidup untuk kelapa sawit berkualitas</p>
+      <a href="#about" class="btn btn-warning btn-lg">Kenali Lebih Dekat</a>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="section-padding">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <img src="https://images.unsplash.com/photo-1598514982846-8b0c6f4cbd5e" class="img-fluid rounded">
+      </div>
+      <div class="col-md-6">
+        <h2 class="section-title">Siapa Nyawit Raharja?</h2>
+        <p>Petani sawit berpengalaman lebih dari 20 tahun di Sumatera dengan teknik pertanian modern.</p>
+
+        <div class="row stats text-center">
+          <div class="col"><h3>50+</h3><span>Hektar</span></div>
+          <div class="col"><h3>100%</h3><span>Organik</span></div>
+          <div class="col"><h3>25thn</h3><span>Pengalaman</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="produk" class="section-padding bg-light">
+  <div class="container text-center">
+    <h2 class="section-title">Dokumentasi & Hasil Panen</h2>
+    <div class="row mt-4">
+
+      <div class="col-md-4">
+        <div class="card custom-card">
+          <img src="https://images.unsplash.com/photo-1603032993452-5b9e7bdf0f5f">
+          <div class="card-body">
+            <h5>Pembibitan Unggul</h5>
+            <p>Bibit DxP berkualitas tinggi.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card custom-card">
+          <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449">
+          <div class="card-body">
+            <h5>Pemeliharaan Intensif</h5>
+            <p>Pemupukan tepat dosis.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card custom-card">
+          <img src="https://images.unsplash.com/photo-1602524208095-2e5b8a4e9a10">
+          <div class="card-body">
+            <h5>Panen Raya</h5>
+            <p>Rendemen minyak tinggi.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="kontak" class="section-padding">
+  <div class="container">
+    <h2 class="section-title text-center">Hubungi Kami</h2>
+
+    <form onsubmit="kirimPesan(event)" class="contact-form">
+      <input type="text" id="nama" class="form-control mb-3" placeholder="Nama">
+      <input type="email" id="email" class="form-control mb-3" placeholder="Email">
+      <textarea id="pesan" class="form-control mb-3" placeholder="Pesan"></textarea>
+      <button class="btn btn-warning w-100">Kirim Pesan</button>
+    </form>
+
+  </div>
+</section>
+
+<footer class="footer">
+  © 2026 Portofolio Nyawit Raharja. All Rights Reserved. <br>
+  <a href="privacy.php">Privacy Policy</a> |
+  <a href="terms.php">Terms of Use</a>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
+
+css
+body{
+    font-family: Arial, sans-serif;
+}
+
+/* NAVBAR */
+.custom-navbar{
+    background:#2e7d32;
+}
+.navbar-brand,.nav-link{
+    color:white !important;
+}
+
+/* HERO */
+.hero-section{
+    height:100vh;
+    background:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef') center/cover;
+}
+.hero-overlay{
+    background:rgba(0,0,0,0.55);
+    height:100%;
+    display:flex;
+    align-items:center;
+}
+.hero-content h1{
+    color:white;
+    font-size:60px;
+    font-weight:bold;
+}
+.hero-content p{
+    color:white;
+    font-size:20px;
+}
+
+/* SECTION */
+.section-padding{
+    padding:80px 0;
+}
+.section-title{
+    font-weight:bold;
+    color:#2e7d32;
+    margin-bottom:30px;
+}
+
+/* STATS */
+.stats h3{
+    color:#2e7d32;
+    font-weight:bold;
+}
+
+/* CARD */
+.custom-card{
+    border:none;
+    border-radius:15px;
+    overflow:hidden;
+    transition:0.3s;
+}
+.custom-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+.custom-card img{
+    height:200px;
+    object-fit:cover;
+}
+
+/* FORM */
+.contact-form{
+    max-width:600px;
+    margin:auto;
+}
+
+/* FOOTER */
+.footer{
+    background:#1b1b1b;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+.footer a{
+    color:#ffc107;
+    text-decoration:none;
+}
+
+
+js 
+function kirimPesan(e){
+    e.preventDefault();
+
+    let nama = document.getElementById("nama").value;
+    let email = document.getElementById("email").value;
+    let pesan = document.getElementById("pesan").value;
+
+    if(nama=="" || email=="" || pesan==""){
+        alert("Semua field wajib diisi!");
+    }else{
+        alert("Pesan berhasil dikirim!");
+    }
+}
+
+privacy.php 
+<!DOCTYPE html>
+<html>
+<head>
+<title>Privacy Policy</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container py-5">
+<h1>Privacy Policy</h1>
+<p>Kami menghargai privasi pengunjung. Data yang dikirim melalui form hanya digunakan untuk komunikasi dan tidak dibagikan ke pihak ketiga.</p>
+<a href="index.php">Kembali</a>
+</body>
+</html>
+
+terms.php 
+<!DOCTYPE html>
+<html>
+<head>
+<title>Terms of Use</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container py-5">
+<h1>Terms of Use</h1>
+<p>Seluruh konten website dilindungi hak cipta. Dilarang menyalin tanpa izin pemilik website.</p>
+<a href="index.php">Kembali</a>
+</body>
+</html>
+
+Cara buat Terms of Use
+Buka:
+https://toc-generator.ashutoshkrris.in/
+Isi form seperti ini:
+Website name →
+Nyawit Raharja
+Website URL →
+https://nyawitraharja.com
+(boleh isi domain bebas kalau belum punya)
+Country →
+Indonesia
+Email →
+emailkamu@gmail.com
+Company Name →
+Nyawit Raharja
+Klik Generate Terms and Conditions
+⬇️ Scroll → akan muncul teks panjang.
+Klik Copy to clipboard
+Masukkan ke terms.php
+Ganti isi <p> di file terms.php jadi:
+<h1>Terms of Use</h1>
+<p>PASTE HASIL GENERATOR DI SINI</p>
+Selesai ✅
+🟢 2️⃣ Cara buat Privacy Policy
+Buka:
+https://app-privacy-policy-generator.firebaseapp.com/
+Isi:
+App Name / Website Name
+Nyawit Raharja
+Email
+emailkamu@gmail.com
+Checklist yang dicentang:
+✔ Contact Form
+✔ Website
+Klik Generate
+Scroll bawah → klik Copy
+Masukkan ke privacy.php
+Ganti isi <p> jadi:
+<h1>Privacy Policy</h1>
+<p>PASTE HASIL GENERATOR DI SINI</p>
+
+
+penjelasan codign
