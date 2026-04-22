@@ -62,7 +62,6 @@ Route::get('/hapus/{id}', function ($id) {
     
 });
 
-Route::get('/test-method/', function () {
-    //return view('welcome');
-    
+Route::get('/test-method', function () {
+    return view('welcome');
 });
