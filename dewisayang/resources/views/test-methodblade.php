@@ -16,4 +16,5 @@
     @csrf
     @method('DELETE')
     <button type="submit">Hapus Data (DELETE)</button>
-</form
+</form>
+

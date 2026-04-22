@@ -35,7 +35,7 @@ Route::get('/user2/{name}', function ($name) {
 });
 
 Route::get('/user3/{name ?}', function ($name = 'Tamu') {
-    echo "User Name : " .$name;
+    echo "User Name : " .$name; 
 });
 
 Route::get('/user4/{id}/{name}', function ($id, $name) {
@@ -65,3 +65,19 @@ Route::get('/hapus/{id}', function ($id) {
 Route::get('/test-method', function () {
     return view('welcome');
 });
+
+//menampilkan alamat profil
+Route::get('/profil', function () {
+    return view("profil");
+});
+
+// Gunakan kurung kurawal { } dan masukkan $name ke dalam function
+Route::get('/detailproduk/{name}', function ($name) { 
+    return view("produk.detail", [
+        'produk_name' => $name,
+        'id' => 101,
+        'color' => 'Silver',
+        'stock' => 12
+    ]);
+});
+

@@ -1,0 +1,17 @@
+##Tahapan Instalasi Project
+1. CLone project dari Rpeositoory
+2. akses Project dari Terminal(command Prompt)
+3 Jalankan Perintah 'composer isntall' untuk mendownload
+
+depedensi 
+1 copy file '.env.example' dan rename menjar .env
+2 jalankan pperintha 'php artisan key:generate
+
+##menyiapakn Database
+1/. Buat file 'databse.sqlite' di dalama folder 'database/'
+
+## menjalan erver
+1. Pastikan Sleuruh depedensi telah terinstal
+2 pastikan key sdauh digenerate
+3 pastikan database sudah disiapkan
+4.  jalankan perintha dpp
