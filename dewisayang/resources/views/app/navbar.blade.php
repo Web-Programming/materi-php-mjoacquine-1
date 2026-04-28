@@ -1,0 +1,15 @@
+<a class ="navbar-brand" href="#">My App </a>
+<button class= "navbar-toggler" type="button"
+data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+aria-controls="mainNavbar" aria-expanded="false"
+aria-label = "toggle navigation">
+<span class="navbar -toggler-icon"></span>
+</button>
+
+<div class = "collapse navbar-collapse" id="mainNavbar">
+    <ul class ="navbar-nav ms-auto">
+        <li class="nav-item">
+            <a class ="nav-link active" aria-current="page" href="#">Produk</a>
+</lu>
+</ul>
+</div>
