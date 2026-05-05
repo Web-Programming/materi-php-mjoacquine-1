@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class ProductController extends Controller
 {
     /**
@@ -11,16 +11,18 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = [
-            ['id' => 1, 'name' => 'Laptop', 'price' => 7500000],
-            ['id' => 2, 'name' => 'Mouse', 'price' => 1500000],
-            ['id' => 3, 'name' => 'Keyboard', 'price' => 300000],
-            ['id' => 4, 'name' => 'Monitor', 'price' => 2500000]
-        ];
-
+        $title ="Daftar Produk";
+        // $products = [
+        //     ['id' => 1, 'name' => 'Laptop', 'price' => 7500000],
+        //     ['id' => 2, 'name' => 'Mouse', 'price' => 1500000],
+        //     ['id' => 3, 'name' => 'Keyboard', 'price' => 300000],
+        //     ['id' => 4, 'name' => 'Monitor', 'price' => 2500000]
+        // ];
+        $products = DB ::table('products')->get();
         //return view('produk.index', compact('products'));
-        return view('produk.index', compact('products'));
+        return view('produk.index', compact('title','products'));
     }
+
 
     /**
      * Show the form for creating a new resource.
