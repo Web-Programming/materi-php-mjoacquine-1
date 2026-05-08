@@ -11,18 +11,20 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $title ="Daftar Produk";
-        // $products = [
-        //     ['id' => 1, 'name' => 'Laptop', 'price' => 7500000],
-        //     ['id' => 2, 'name' => 'Mouse', 'price' => 1500000],
-        //     ['id' => 3, 'name' => 'Keyboard', 'price' => 300000],
-        //     ['id' => 4, 'name' => 'Monitor', 'price' => 2500000]
-        // ];
-        $products = DB ::table('products')->get();
-        //return view('produk.index', compact('products'));
-        return view('produk.index', compact('title','products'));
-    }
+        $title = 'Daftar Produk';
 
+        $products = [
+            ['id' => 1, 'name' => 'Laptop', 'price' => 25000000],
+            ['id' => 2, 'name' => 'Mouse', 'price' => 300000],
+            ['id' => 3, 'name' => 'Keyboard', 'price' => 500000],
+        ];
+        //$products = product::all(); // cara 1
+        $products = DB::select('SELECT * FROM products'); //cara 2
+        //$products = DB::table('products')->get(); //cara 3
+
+        //return view('produk.index', compact('products'));
+        return view('produk.index', compact('title', 'products'));
+    }
 
     /**
      * Show the form for creating a new resource.

@@ -6,8 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    //jika nama tabel tidak susai dengan konvensi
-    // maka kita bisa mendefinisikan nama tabel secar eksplisit
+    // jika nama tabel tidak sesuai dengan konvensi
+    //maka kita bisa mendefinisikan nama tabel secara eksplisit
     protected $table = 'products';
-    //
 }

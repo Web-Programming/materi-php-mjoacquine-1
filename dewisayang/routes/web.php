@@ -4,21 +4,21 @@ use Illuminate\Support\Facades\Route;
 
 //Route ke halaman utama (home)
 Route::get('/', function () {
-    echo "Hallo, Nama Saya Joacquine";
+    echo "Hallo, Nama Saya Pak JR";
     //return view('welcome');
 });
 //Route ke halaman alamat
 Route::get('/alamat', function(){
-    echo "Jalan Kenten 14. Palembang";
+    echo "Jalan Rajawali 14. Palembang";
 });
 
 //Route ke halaman path1/path2/detail
 Route::get('/path1/path2/detail', function(){
-    echo "Jalan Kenten 14";
+    echo "Jalan Rajawali 14";
     echo "<br>";
     echo "Rt. 01 Rw. 02";
     echo "<br>";
-    echo "Kecamatan Sako";
+    echo "Kecamatan Alang-Alang Lebar";
     echo "<br>";
     echo "Kota Palembang";
     echo "<br>";
@@ -117,4 +117,5 @@ Route::get('/produk/search', ProductController::class.'@search');
 // });
 
 //php artisan make:controller SupplierController --resource
+use App\Http\Controllers\SupplierController;
 Route::resource('/supplier', SupplierController::class);
