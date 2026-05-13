@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('suppliers', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 150);
-            $table->string('phone', 15);
+            $table->string('name');
+            $table->string('phone')->nullable();
             $table->text('address')->nullable();
-            $table->timestamps();
+            $table->timestamps(); // Ini akan membuat kolom created_at dan updated_at
         });
     }
 

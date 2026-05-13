@@ -1,60 +1,80 @@
 @extends('app.master')
+
 @section('title', $title)
+
 @section('sidebar')
     @parent
-@section('submenu-produk')
-    <a href="/produk/create"
+@section('submenu-supplier')
+    <a href="/supplier" class="list-group-item list-group-item-action ps-4">Daftar Supplier</a>
+    <a href="/supplier/create"
         class="list-group-item list-group-item-action ps-4 
-        {{ request()->is('produk/create') ? 'active' : '' }}">Tambah
-        Produk</a>
-    <a href="/produk/search"
+         {{ request()->is('supplier/create') ? 'active' : '' }}">Tambah
+        Supplier</a>
+    <a href="/supplier/search"
         class="list-group-item list-group-item-action ps-4 
-        {{ request()->is('produk/search') ? 'active' : '' }}">Cari
-        Produk</a>
+         {{ request()->is('supplier/search') ? 'active' : '' }}">Cari
+        Supplier</a>
 @endsection
 @endsection
 
 @section('content')
 <div class="container-fluid">
-    <h1 class="mb-4">{{ $title }}</h1>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>{{ $title }}</h1>
+        <a href="{{ url('/supplier') }}" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Kembali ke Daftar
+        </a>
+    </div>
 
-    <div class="table-responsive">
-        <table class="table table-striped table-bordered table-hover">
-            <thead class="table-dark">
-                <tr>
-                    <th>No</th>
-                    <th>Nama Produk</th>
-                    <th>Harga</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{-- @for ($i = 0; $i < count($products); $i++)
-                    <tr>
-                        <td>{{ $i + 1 }}</td>
-                        <td>{{ $products[$i]['name'] }}</td>
-                        <td>Rp {{ number_format($products[$i]['price'], 2, ',', '.') }}</td>
-                        <td>
-                            <a href="{{ url('/produk/' . $products[$i]['id']) }}" class="btn btn-sm btn-info">Detail</a>
-                            <a href="{{ url('/produk/' . $products[$i]['id'] . '/edit') }}"
-                                class="btn btn-sm btn-primary">Edit</a>
-                        </td>
-                    </tr>
-                @endfor --}}
-                @foreach ($products as $item)
-                    <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item->name }}</td>
-                        <td>Rp {{ number_format($item->price, 2, ',', '.') }}</td>
-                        <td>
-                            <a href="{{ url('/produk/' . $item->id) }}" class="btn btn-sm btn-info">Detail</a>
-                            <a href="{{ url('/produk/' . $item->id . '/edit') }}"
-                                class="btn btn-sm btn-primary">Edit</a>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Informasi Supplier</h5>
+        </div>
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col-md-3">
+                    <strong>ID Supplier:</strong>
+                </div>
+                <div class="col-md-9">
+                    {{ $supplier['id'] }}
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-3">
+                    <strong>Nama Supplier:</strong>
+                </div>
+                <div class="col-md-9">
+                    {{ $supplier['name'] }}
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-3">
+                    <strong>Telepon:</strong>
+                </div>
+                <div class="col-md-9">
+                    <i class="bi bi-telephone"></i> {{ $supplier['phone'] }}
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-3">
+                    <strong>Alamat:</strong>
+                </div>
+                <div class="col-md-9">
+                    <i class="bi bi-geo-alt"></i> {{ $supplier['address'] }}
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <a href="{{ url('/supplier/' . $supplier['id'] . '/edit') }}" class="btn btn-primary">
+                <i class="bi bi-pencil"></i> Edit Supplier
+            </a>
+            <a href="{{ url('/supplier') }}" class="btn btn-secondary">
+                <i class="bi bi-list"></i> Lihat Semua Supplier
+            </a>
+        </div>
     </div>
 </div>
 @endsection
