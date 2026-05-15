@@ -45,7 +45,7 @@ class ProductController extends Controller
             'price' => $request->price,
             'description' => $request->description,
             'status' => $request->status,
-            'is_active' => $request->has('is_active') ? 1 : 0,
+            'is active' => $request->has('is_active') ? 1 : 0,
             'release_date' => $request->release_date,
             'created_at' => now(),
             'updated_at' => now(),
@@ -99,7 +99,7 @@ class ProductController extends Controller
             'price' => $request->price,
             'description' => $request->description,
             'status' => $request->status,
-            'is_active' => $request->has('is_active') ? 1 : 0,
+            'is active' => $request->has('is_active') ? 1 : 0,
             'release_date' => $request->release_date,
             'updated_at' => now(),
         ]);
