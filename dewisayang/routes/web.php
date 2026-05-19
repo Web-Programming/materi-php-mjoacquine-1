@@ -3,106 +3,106 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 
-//Route ke halaman utama saya
+//////////////////////////////////////////////////////
+// ==================== LANDING PAGE =================
+//////////////////////////////////////////////////////
 Route::get('/', function () {
-    return view('dashboard');
-})->name('dashboard');
+    return view('home');
+})->name('home');
 
-//Route ke halaman alamat
+//////////////////////////////////////////////////////
+// ==================== ROUTE DASAR LATIHAN =========
+//////////////////////////////////////////////////////
+
 Route::get('/alamat', function(){
     echo "Jalan Kolonel Atmo 12. Palembang";
 });
 
-//Route ke /path1/path2/detail
 Route::get('/path1/path2/detail', function(){
-    echo "Jalan Kolonel Atmo 12. Palembang";
-    echo "<br>";
-    echo "Rt. 01 Rw. 02";
-    echo "<br>";
-    echo "Kecamatan Ilir Timur 1";
-    echo "<br>";
-    echo "Kota Palembang";
-    echo "<br>";
-    echo "Provinsi Sumatera Selatan";
+    echo "Jalan Kolonel Atmo 12. Palembang <br>
+          Rt. 01 Rw. 02 <br>
+          Kecamatan Ilir Timur 1 <br>
+          Kota Palembang <br>
+          Provinsi Sumatera Selatan";
 });
 
-//Route dinamis dengan parameter id
-Route::get('/user/{id}', function($id){
-    echo "User ID: ". $id;
-});
+// Route dinamis
+Route::get('/user/{id}', fn($id) => "User ID: $id");
+Route::get('/user2/{name}', fn($name) => "User Name: $name");
+Route::get('/user3/{name?}', fn($name = 'Tamu') => "User Name: $name");
 
-//Route dinamis dengan parameter nama
-Route::get('/user2/{name}', function($name){
-    echo "User Name: ". $name;
-});
-
-//Route dinamis dengan opsinoal parameter nama
-Route::get('/user3/{name?}', function($name = 'Tamu'){
-    echo "User Name: ". $name;
-});
-
-//Route dinamis dengan parameter nama dan id
 Route::get('/user4/{id}/{name}', function($id, $name){
-    echo "User ID: ". $id;
-    echo "<br>";
-    echo "User Name: ". $name;
+    echo "User ID: $id <br> User Name: $name";
 });
 
-//Route dengan metode POST
-Route::get('/simpan', function(){
-    echo "Data berhasil disimpan";
+//////////////////////////////////////////////////////
+// ============ CONTOH HTTP METHOD ==================
+//////////////////////////////////////////////////////
+
+Route::post('/simpan', fn() => "Data berhasil disimpan");
+Route::put('/update/{id}', fn($id) => "Data berhasil diperbaharui ID: $id");
+Route::patch('/update2/{id}', fn($id) => "Data berhasil diperbaharui ID: $id");
+Route::delete('/hapus/{id}', fn($id) => "Data berhasil dihapus dengan ID: $id");
+
+Route::get('/profil', fn() => view("myprofile"));
+
+//////////////////////////////////////////////////////
+// ================= ROUTE AUTH =====================
+//////////////////////////////////////////////////////
+
+// Register
+Route::get('/register', [AuthController::class, 'registerForm'])
+    ->name('register')->middleware('guest');
+
+Route::post('/register', [AuthController::class, 'register'])
+    ->middleware('guest');
+
+// Login
+Route::get('/login', [AuthController::class, 'loginForm'])
+    ->name('login')->middleware('guest');
+
+Route::post('/login', [AuthController::class, 'login'])
+    ->middleware('guest');
+
+// Logout
+Route::post('/logout', [AuthController::class, 'logout'])
+    ->name('logout')->middleware('auth');
+
+//////////////////////////////////////////////////////
+// ======== ROUTE YANG WAJIB LOGIN ==================
+//////////////////////////////////////////////////////
+
+Route::middleware('auth')->group(function () {
+
+    // Dashboard
+    Route::get('/dashboard', [DashboardController::class, 'index'])
+        ->name('dashboard');
+
+    //////////////////////////////////////////////////
+    // 🔥 CRUD BARANG (pakai ProductController)
+    //////////////////////////////////////////////////
+    Route::get('/barang', [ProductController::class, 'index']);
+    Route::get('/barang/create', [ProductController::class, 'create']);
+    Route::get('/barang/{id}', [ProductController::class, 'show']);
+    Route::get('/barang/edit/{id}', [ProductController::class, 'edit']);
+    Route::post('/barang', [ProductController::class, 'store']);
+    Route::put('/barang/update/{id}', [ProductController::class, 'update']);
+    Route::delete('/barang/{id}', [ProductController::class, 'destroy']);
+
+    //////////////////////////////////////////////////
+    // PRODUK (resource)
+    //////////////////////////////////////////////////
+    Route::get('/produk/search', [ProductController::class, 'search'])
+        ->name('produk.search');
+    Route::resource('produk', ProductController::class);
+
+    //////////////////////////////////////////////////
+    // SUPPLIER
+    //////////////////////////////////////////////////
+    Route::get('/supplier/search', [SupplierController::class, 'search'])
+        ->name('supplier.search');
+    Route::resource('supplier', SupplierController::class);
 });
-
-//Route dengan metode PUT
-Route::get('/update/{id}', function($id){
-    echo "Data berhasil diperbaharui ID: ". $id;
-});
-
-//Route dengan metode PATCH
-Route::get('/update2{id}', function($id){
-    echo "Data berhasil diperbaharui ID: ". $id;
-});
-
-//Route dengan metode Delete
-Route::get('/hapus/{id', function($id){
-    echo "Data berhasil dihapus dengan ID: ". $id;
-});
-
-//Menampilkan Halaman Profil
-Route::get('/profil', function(){
-    return view("myprofile");
-});
-
-//Gunakan . untuk memisahkan folder dengan view
-//Route::get('/detailproduk', function(){
-//    return view("produk.detail");
-//});
-
-//Mengirim data ke view
-// Route::get('/detailproduk/{name}', function($name){
-//     return view("produk.detail",
-//         ['product_name' => $name,
-//         'id' => 101,
-//         'color' => 'Silver',
-//         'stock' => 12
-//         ]
-//     );
-// });
-
-// Route::get('/produk', [ProductController::class, 'index']);
-
-
-// Route::get('/produk/create', [ProductController::class, 'create']);
-
-// Route::get('/produk/search', [ProductController::class, 'search']);
-
-// Route::get('/produk/detail/{id}', [ProductController::class, 'show']);
-
-// 1. Taruh rute search DI ATAS resource
-Route::get('/produk/search', [ProductController::class, 'search'])->name('produk.search');
-Route::get('/supplier/search', [SupplierController::class, 'search'])->name('supplier.search');
-
-// 2. Resource mencakup (index, create, store, show, edit, update, destroy)
-Route::resource('produk', ProductController::class);
-Route::resource('supplier', SupplierController::class);
