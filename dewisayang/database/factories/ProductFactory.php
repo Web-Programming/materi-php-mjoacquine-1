@@ -26,4 +26,4 @@ class ProductFactory extends Factory
             'release_date' => now()->subDays(rand(1, 365)),
         ];
     }
-}
+}ss

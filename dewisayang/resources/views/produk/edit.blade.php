@@ -1,117 +1,86 @@
 @extends('app.master')
-
 @section('title', $title)
+@section('sidebar')
+    @parent
+@section('submenu-produk')
+    <a href="/produk/create"
+        class="list-group-item list-group-item-action ps-4 
+        {{ request()->is('produk/create') ? 'active' : '' }}">Tambah
+        Produk</a>
+    <a href="/produk/search"
+        class="list-group-item list-group-item-action ps-4 
+        {{ request()->is('produk/search') ? 'active' : '' }}">Cari
+        Produk</a>
+@endsection
+@endsection
 
 @section('content')
 <div class="container-fluid">
-
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1>{{ $title }}</h1>
-        <a href="{{ route('produk.index') }}" class="btn btn-secondary">
-            ← Kembali
-        </a>
-    </div>
-
-    <div class="card shadow-sm">
-        <div class="card-body">
-
-            <form action="{{ route('produk.update', $product->id) }}" method="POST">
-                @csrf
-                @method('PUT')
-
-                {{-- ================= NAMA PRODUK ================= --}}
-                <div class="mb-3">
-                    <label class="form-label fw-bold">Nama Produk</label>
-                    <input type="text" name="name"
-                        class="form-control @error('name') is-invalid @enderror"
-                        value="{{ old('name', $product->name ?? '') }}">
-                    @error('name')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div class="row">
-
-                    {{-- ================= HARGA ================= --}}
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label fw-bold">Harga</label>
-                        <div class="input-group">
-                            <span class="input-group-text">Rp</span>
-                            <input type="number" name="price"
-                                class="form-control @error('price') is-invalid @enderror"
-                                value="{{ old('price', $product->price ?? '') }}">
-                        </div>
-                        @error('price')
-                            <div class="invalid-feedback d-block">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    {{-- ================= TANGGAL RILIS ================= --}}
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label fw-bold">Tanggal Rilis</label>
-                        <input type="date" name="release_date"
-                            class="form-control @error('release_date') is-invalid @enderror"
-                            value="{{ old('release_date', $product->release_date ?? '') }}">
-                        @error('release_date')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                </div>
-
-                {{-- ================= DESKRIPSI ================= --}}
-                <div class="mb-3">
-                    <label class="form-label fw-bold">Deskripsi</label>
-                    <textarea name="description" rows="3"
-                        class="form-control @error('description') is-invalid @enderror">{{ old('description', $product->description ?? '') }}</textarea>
-                    @error('description')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div class="row">
-
-                    {{-- ================= STATUS ================= --}}
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label fw-bold">Status</label>
-                        <select name="status" class="form-select">
-                            <option value="new" {{ old('status', $product->status ?? '') == 'new' ? 'selected' : '' }}>New</option>
-                            <option value="used" {{ old('status', $product->status ?? '') == 'used' ? 'selected' : '' }}>Used</option>
-                            <option value="pending" {{ old('status', $product->status ?? '') == 'pending' ? 'selected' : '' }}>Pending</option>
-                        </select>
-                    </div>
-
-                    {{-- ================= CHECKBOX AKTIF ================= --}}
-                    <div class="col-md-6 mb-3 d-flex align-items-end">
-                        <div class="form-check">
-                            @php
-                                $checked = old('is_active', $product->is_active ?? 0);
-                            @endphp
-                            <input type="checkbox" name="is_active" value="1"
-                                class="form-check-input" id="is_active"
-                                {{ $checked == 1 ? 'checked' : '' }}>
-                            <label class="form-check-label" for="is_active">
-                                Produk Aktif / Dijual
-                            </label>
-                        </div>
-                    </div>
-
-                </div>
-
-                <hr>
-
-                <div class="mt-4">
-                    <button type="submit" class="btn btn-primary px-4">
-                        💾 Simpan Perubahan
-                    </button>
-                    <a href="{{ route('produk.index') }}" class="btn btn-light px-4">
-                        Batal
-                    </a>
-                </div>
-
-            </form>
-
+    <h1>{{ $title }}</h1>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul class="mb-0">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
         </div>
-    </div>
+    @endif
+    <form action="{{ route('produk.update', $product->id) }}" method="POST">
+        @csrf
+        @method('PUT')
+        <div class="mb-3">
+            <label for="name" class="form-label">Nama Produk</label>
+            <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror"
+                value="{{ old('name', $product->name) }}">
+            @error('name')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">Harga</label>
+            <input type="number" name="price" id="price" step="0.01"
+                class="form-control @error('price') is-invalid @enderror" value="{{ old('price', $product->price) }}">
+            @error('price')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Deskripsi</label>
+            <textarea name="description" id="description" rows="3"
+                class="form-control @error('description') is-invalid @enderror">{{ old('description', $product->description) }}</textarea>
+            @error('description')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="mb-3">
+            <label for="status" class="form-label">Status</label>
+            <select name="status" id="status" class="form-select @error('status') is-invalid @enderror">
+                <option value="">Pilih Status</option>
+                <option value="new" {{ old('status', $product->status) === 'new' ? 'selected' : '' }}>Baru</option>
+                <option value="used" {{ old('status', $product->status) === 'used' ? 'selected' : '' }}>Bekas
+                </option>
+            </select>
+            @error('status')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="mb-3">
+            <label for="release_date" class="form-label">Tanggal Rilis</label>
+            <input type="date" name="release_date" id="release_date"
+                class="form-control @error('release_date') is-invalid @enderror"
+                value="{{ old('release_date', $product->release_date) }}">
+            @error('release_date')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" name="is_active" id="is_active" value="1" class="form-check-input"
+                {{ old('is_active', $product->is_active) ? 'checked' : '' }}>
+            <label for="is_active" class="form-check-label">Aktif</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a href="{{ route('produk.index') }}" class="btn btn-secondary">Batal</a>
+    </form>
 </div>
-@endsection
+@endsections

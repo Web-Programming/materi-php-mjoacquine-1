@@ -2,108 +2,109 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class ProductController extends Controller
 {
     public function index()
     {
-        $title = 'Daftar Produk';
-        $products = DB::table('products')->paginate(10);
-
+        Gate::authorize('viewAny', Product::class);
+        $title = "Daftar Produk";
+        $products = Product::paginate(10);
         return view('produk.index', compact('title', 'products'));
     }
 
     public function create()
     {
-        $title = 'Tambah Produk';
+        // Cek authorization menggunakan Gate
+        Gate::authorize('create-product');
+        $title = "Tambah Produk";
         return view('produk.create', compact('title'));
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|min:3|max:100',
-            'price' => 'required|numeric',
-            'description' => 'required',
+        Gate::authorize('create', Product::class);
+        $validated = $request->validate([
+            'name' => 'required|string|max:100',
+            'price' => 'required|numeric|min:0',
+            'description' => 'nullable|string',
             'status' => 'required|in:new,used',
+            'is_active' => 'nullable|boolean',
             'release_date' => 'nullable|date',
+        ], [
+            'name.required' => 'Nama produk wajib diisi.',
+            'name.max' => 'Nama produk maksimal 100 karakter.',
+            'price.required' => 'Harga produk wajib diisi.',
+            'price.numeric' => 'Harga produk harus berupa angka.',
+            'price.min' => 'Harga produk tidak boleh negatif.',
+            'status.required' => 'Status produk wajib dipilih.',
+            'status.in' => 'Status produk harus new atau used.',
+            'release_date.date' => 'Format tanggal rilis tidak valid.',
         ]);
 
-        DB::table('products')->insert([
-            'name' => $request->name,
-            'price' => $request->price,
-            'description' => $request->description,
-            'status' => $request->status,
-            'is active' => $request->has('is_active') ? 1 : 0,
-            'release_date' => $request->release_date,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        return redirect()->route('produk.index')->with('success', 'Produk berhasil ditambahkan');
+        $validated['is_active'] = $request->has('is_active') ? 1 : 0;
+        Product::create($validated);
+        return redirect()->route('produk.index')
+            ->with('success', 'Produk berhasil ditambahkan.');
     }
 
-    public function show($id)
+    public function show(string $id)
     {
-        $title = 'Detail Produk';
-        $product = DB::table('products')->where('id', $id)->first();
-
-        abort_if(!$product, 404);
-
-        return view('produk.show', compact('title', 'product'));
+        $title = "Detail Produk";
+        $product = Product::findOrFail($id);
+        return view('produk.detail', compact('product', 'title'));
     }
 
-    public function edit($id)
+    public function edit(string $id)
     {
-        $title = 'Edit Produk';
-        $product = DB::table('products')->where('id', $id)->first();
-
-        abort_if(!$product, 404);
-
-        return view('produk.edit', compact('title', 'product'));
+        Gate::authorize('update-product');
+        $title = "Edit Produk";
+        $product = Product::findOrFail($id);
+        return view('produk.edit', compact('product', 'title'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, string $id)
     {
-        $request->validate([
-            'name' => 'required|min:3|max:100',
-            'price' => 'required|numeric',
-            'description' => 'required',
+
+        $product = Product::findOrFail($id);
+        Gate::authorize('update', $product);
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:100',
+            'price' => 'required|numeric|min:0',
+            'description' => 'nullable|string',
             'status' => 'required|in:new,used',
+            'is_active' => 'nullable|boolean',
             'release_date' => 'nullable|date',
+        ], [
+            'name.required' => 'Nama produk wajib diisi.',
+            'name.max' => 'Nama produk maksimal 100 karakter.',
+            'price.required' => 'Harga produk wajib diisi.',
+            'price.numeric' => 'Harga produk harus berupa angka.',
+            'price.min' => 'Harga produk tidak boleh negatif.',
+            'status.required' => 'Status produk wajib dipilih.',
+            'status.in' => 'Status produk harus new atau used.',
+            'release_date.date' => 'Format tanggal rilis tidak valid.',
         ]);
 
-        DB::table('products')->where('id', $id)->update([
-            'name' => $request->name,
-            'price' => $request->price,
-            'description' => $request->description,
-            'status' => $request->status,
-            'is active' => $request->has('is_active') ? 1 : 0,
-            'release_date' => $request->release_date,
-            'updated_at' => now(),
-        ]);
+        $validated['is_active'] = $request->has('is_active') ? 1 : 0;
 
-        return redirect()->route('produk.index')->with('success', 'Produk berhasil diperbarui');
+        $product->update($validated);
+
+        return redirect()->route('produk.index')
+            ->with('success', 'Produk berhasil diperbarui.');
     }
 
-    public function destroy($id)
+    public function destroy(string $id)
     {
-        DB::table('products')->where('id', $id)->delete();
-        return redirect()->route('produk.index')->with('success', 'Produk berhasil dihapus');
-    }
+        Gate::authorize('delete-product');
+        $product = Product::findOrFail($id);
+        $product->delete();
 
-    public function search(Request $request)
-    {
-        $title = 'Pencarian Produk';
-        $keyword = $request->keyword;
-
-        $products = DB::table('products')
-            ->where('name', 'like', "%$keyword%")
-            ->paginate(10)
-            ->withQueryString();
-
-        return view('produk.index', compact('title', 'products'));
+        return redirect()->route('produk.index')
+            ->with('success', 'Produk berhasil dihapus.');
     }
 }
